@@ -6,7 +6,8 @@
 	 * Facial expression
 	 * Conclude
 	 * Fix face alignment
-	 * Test
+	 * Better font
+	 * Better answer display
 	 * Selection menu
 	 * More characters
 	 * Can use keyboard
