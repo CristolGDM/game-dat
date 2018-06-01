@@ -3,7 +3,6 @@
 	/*******************/
 
 	/*
-	 * Facial expression
 	 * Conclude
 	 * Fix face alignment
 	 * Better font
@@ -24,6 +23,7 @@ var DatingController = function($scope, $http){
 	/* Scope functions */
 	/*******************/
 	view.$onInit = onInit;
+	view.currentFace = [0, 0];
 	view.getAttractionPercentage = getAttractionPercentage;
 	view.processAnswer = processAnswer;
 
@@ -38,8 +38,9 @@ var DatingController = function($scope, $http){
 			attraction: 50,
 			faces: {
 				default: [0,0],
+				nice: [2, 4],
 				happy: [1,0],
-				angry: [1,2],
+				angry: [2,2],
 				awkward: [3, 2],
 				concludeYes: [0, 5],
 				concludeNo: [4, 0]
@@ -127,76 +128,34 @@ var DatingController = function($scope, $http){
 	/*******************/
 
 	/*
-	 * Called when the user clicks on an answer
-	 * Depending on the answer, it adjusts attraction ratings and generates a new screen via generateScreen or generateHub
-	 * @param {array} answer - the answer to process. answer[0] is the text shown to the user, answer[1] is the kind of answer it is, and answer[2](optional) is the girl's text following this answer (for most answers) or the topic selected (for topic answers)
+	 * Changes current expression by the given amount, and adjust character's face based on the amount changed
+	 * @param {number} amount - Amount to change the attraction by
 	 */
-	function processAnswer(answer) {
-		switch (answer[1]){
-			/* Selecting a new topic */
-			case "topic":
-				/* If you were already talking about something else, the topic is closed, and you lose some attraction */
-				if (currentTopic !== null && currentTopic !== undefined && currentTopic.name !== undefined) {
-					currentCharacter.attraction -= 5;
-					currentTopic.closed = true;
-				}
-				currentTopic = currentCharacter.topics[answer[2]];
-				generateScreen(currentTopic.text, currentTopic.answers);
+	function changeAttraction(amount) {
+		switch (amount){
+			case 0:
+				view.currentFace = currentCharacter.faces.default;
 				break;
 
-			/* Bringing stuff back to you in a positive way */
-			case "positive":
-				/* If it's still the first part of the topic conversation, we go to the second part, mark that the user brought back to himself, and give some attraction */
-				if (!currentTopic.more) {
-					currentTopic.more = true;
-					currentTopic.selfed = true;
-					currentCharacter.attraction += 10;
-					generateScreen(currentTopic.additional.text, currentTopic.additional.answers);
-				}
-				/* On the second part, the user lose attraction if he talked about himself twice, else he gains some. We mark the topic as closed, and go back to the hub */
-				else {
-					currentCharacter.attraction = currentTopic.selfed ? currentCharacter.attraction -5 : currentCharacter.attraction +5;
-					currentTopic.closed = true;
-					currentTopic = null;
-					generateHub(answer[2]);
-				}
+			case -5:
+				view.currentFace = currentCharacter.faces.awkward;
 				break;
 
-			case "joke":
-				/* If it's still the first part of the topic conversation, we go to the second part, mark that the user joked, and give some attraction */
-				if (!currentTopic.more) {
-					currentTopic.more = true;
-					currentTopic.joked = true;
-					currentCharacter.attraction += 10;
-					generateScreen(currentTopic.additional.text, currentTopic.additional.answers);
-				}
-				/* On the second part, the user lose attraction if he joked twice, else he gains some. We mark the topic as closed, and go back to the hub */
-				else {
-					currentCharacter.attraction = currentTopic.joked ? currentCharacter.attraction -5 : currentCharacter.attraction +5;
-					currentTopic.closed = true;
-					currentTopic = null;
-					generateHub(answer[2]);
-				}
+			case -10:
+				view.currentFace = currentCharacter.faces.angry;
 				break;
 
-			/* Neutral "asking for more", we just go to the next screen */
-			case "more":
-				currentTopic.more = true;
-				generateScreen(currentTopic.additional.text, currentTopic.additional.answers);
-
-			/* Neutral answer, we close the topic and go back to the hub, no attraction change */
-			case "neutral":
-				currentTopic.closed = true;
-				generateHub();
+			case 5:
+				view.currentFace = currentCharacter.faces.nice;
 				break;
 
-			/* Being a negative poopoo downer, loss of attraction, topic closed and back to the hub */
-			case "negative":
-				currentCharacter.attraction -= 10;
-				currentTopic.closed = true;
-				generateHub(answer[2]);
+			case +10:
+				view.currentFace = currentCharacter.faces.happy;
 				break;
+
 		}
+
+		currentCharacter.attraction += amount;
 	}
 
 	/*
@@ -283,6 +242,94 @@ var DatingController = function($scope, $http){
 				view.backgroundImage = array[index].data.url;
 				}
 			);
+	}
+
+	/*
+	 * Called when the user clicks on an answer
+	 * Depending on the answer, it adjusts attraction ratings and generates a new screen via generateScreen or generateHub
+	 * @param {array} answer - the answer to process. answer[0] is the text shown to the user, answer[1] is the kind of answer it is, and answer[2](optional) is the girl's text following this answer (for most answers) or the topic selected (for topic answers)
+	 */
+	function processAnswer(answer) {
+		switch (answer[1]){
+			/* Selecting a new topic */
+			case "topic":
+				/* If you were already talking about something else, the topic is closed, and you lose some attraction */
+				if (currentTopic != null && currentTopic.name != null) {
+					changeAttraction(5);
+					currentTopic.closed = true;
+				}
+				else {
+					changeAttraction(0);
+				}
+				currentTopic = currentCharacter.topics[answer[2]];
+				generateScreen(currentTopic.text, currentTopic.answers);
+				break;
+
+			/* Bringing stuff back to you in a positive way */
+			case "positive":
+				/* If it's still the first part of the topic conversation, we go to the second part, mark that the user brought back to himself, and give some attraction */
+				if (!currentTopic.more) {
+					currentTopic.more = true;
+					currentTopic.selfed = true;
+					changeAttraction(5);
+					generateScreen(currentTopic.additional.text, currentTopic.additional.answers);
+				}
+				/* On the second part, the user lose attraction if he talked about himself twice, else he gains some. We mark the topic as closed, and go back to the hub */
+				else {
+					if(currentTopic.selfed){
+						changeAttraction(-5)
+					}
+					else {
+						changeAttraction(10)
+					}
+					currentTopic.closed = true;
+					currentTopic = null;
+					generateHub(answer[2]);
+				}
+				break;
+
+			case "joke":
+				/* If it's still the first part of the topic conversation, we go to the second part, mark that the user joked, and give some attraction */
+				if (!currentTopic.more) {
+					currentTopic.more = true;
+					currentTopic.joked = true;
+					changeAttraction(5);
+					generateScreen(currentTopic.additional.text, currentTopic.additional.answers);
+				}
+				/* On the second part, the user lose attraction if he joked twice, else he gains some. We mark the topic as closed, and go back to the hub */
+				else {
+					if(currentTopic.joked){
+						changeAttraction(-5)
+					}
+					else {
+						changeAttraction(10)
+					}
+					currentTopic.closed = true;
+					currentTopic = null;
+					generateHub(answer[2]);
+				}
+				break;
+
+			/* Neutral "asking for more", we just go to the next screen */
+			case "more":
+				currentTopic.more = true;
+				changeAttraction(0)
+				generateScreen(currentTopic.additional.text, currentTopic.additional.answers);
+
+			/* Neutral answer, we close the topic and go back to the hub, no attraction change */
+			case "neutral":
+				currentTopic.closed = true;
+				changeAttraction(0)
+				generateHub();
+				break;
+
+			/* Being a negative poopoo downer, loss of attraction, topic closed and back to the hub */
+			case "negative":
+				changeAttraction(-10)
+				currentTopic.closed = true;
+				generateHub(answer[2]);
+				break;
+		}
 	}
 
 	/*
