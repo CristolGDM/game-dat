@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+<title>Date Game</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="./dat-app.js"></script>
+<link rel="stylesheet" type="text/css" href="./dat-style.css">
+</head>
+<body>
+	<div ng-controller="DatingController as date" class="page-wrapper" style="background-image: url({{date.backgroundImage}})">
+		<p style="border: 1px solid red; color:red; position: fixed; top: 20px; left: 50%; padding: 5px 15px; font-size: 16px; display: none">
+			data:
+		</p>
+		<div class="attraction-bar" style="background: linear-gradient(0deg, #ff5a05 {{date.getAttractionPercentage()}}%, rgba(0,0,0,0) 0%)"></div>
+		<div class="character-image" 
+			style="
+				background-position-x: {{(date.currentDialog.image[0] * 24.9 +.2)}}%;
+				background-position-y: {{(date.currentDialog.image[1] * 20 +.2)}}%
+			"
+		><img src="http://via.placeholder.com/615x630" class="character-image--placeholder" /></div>
+		<div class="text-area">
+			<p class="she-says">{{date.sheSays}}</p>
+
+			<p class="he-says" ng-repeat="answer in date.heSays" ng-click="date.processAnswer(answer)">- {{answer[0]}}</p>
+	</div>
+</body>
