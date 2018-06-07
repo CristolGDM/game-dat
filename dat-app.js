@@ -3,10 +3,7 @@
 	/*******************/
 
 	/*
-	 * Conclude
 	 * Fix face alignment
-	 * Better font
-	 * Better answer display
 	 * Selection menu
 	 * More characters
 	 * Can use keyboard
@@ -18,12 +15,12 @@ var DatingController = function($scope, $http){
 	/*******************/
 	/* Scope variables */
 	/*******************/
+	view.currentFace = [0, 0];
 
 	/*******************/
 	/* Scope functions */
 	/*******************/
 	view.$onInit = onInit;
-	view.currentFace = [0, 0];
 	view.getAttractionPercentage = getAttractionPercentage;
 	view.processAnswer = processAnswer;
 
@@ -45,6 +42,8 @@ var DatingController = function($scope, $http){
 				concludeYes: [0, 5],
 				concludeNo: [4, 0]
 			},
+
+			hi: "Hello, nice to meet you!",
 
 			topics: {
 				today: {
@@ -232,7 +231,7 @@ var DatingController = function($scope, $http){
 		currentCharacter = characters["Futsuko"];
 
 		/* We generate the first hub */
-		generateHub();
+		generateHub(currentCharacter.hi);
 
 		/* We get a random image from reddit as background */
 		$http.get('https://www.reddit.com/r/ImaginaryCityscapes/hot.json?sort=new')
