@@ -65,11 +65,7 @@ var DatingController = function($scope, $http){
 							["Ah I hate that place", "negative", "Ah, I see..."],
 							["Ah, green poop tonight haha!", "joke", "Nooo, why are you saying that haha!"]
 						]
-					},
-					closed: false,
-					more: false,
-					joked: false,
-					selfed: false
+					}
 				},
 				weekend: {
 					name: "weekend",
@@ -89,11 +85,7 @@ var DatingController = function($scope, $http){
 							["It's kind of a waste of money no?", "negative", "I guess..."],
 							["Ah, someone has been eating too much mac & cheese, I see.", "joke", "Nooo, not that much!"]
 						]
-					},
-					closed: false,
-					more: false,
-					joked: false,
-					selfed: false
+					}
 				},
 				hobbies: {
 					name: "hobbies",
@@ -113,11 +105,7 @@ var DatingController = function($scope, $http){
 							["Ugh of course a chick flick.", "negative", "Okay..."],
 							["Yeah I understand, I cried almost as much as when I watched the Spongebob movie.", "joke", "Haha what are you saying!"]
 						]
-					},
-					closed: false,
-					more: false,
-					joked: false,
-					selfed: false
+					}
 				}
 			}
 		}
@@ -325,9 +313,23 @@ var DatingController = function($scope, $http){
 
 			/* Being a negative poopoo downer, loss of attraction, topic closed and back to the hub */
 			case "negative":
-				changeAttraction(-10)
-				currentTopic.closed = true;
-				generateHub(answer[2]);
+				if (!currentTopic.more) {
+					changeAttraction(-10);
+					currentTopic.more = true;
+					currentTopic.negatived = true;
+					generateScreen(currentTopic.additional.text, currentTopic.additional.answers);
+				}
+				else {
+					if(currentTopic.negatived){
+						changeAttraction(-15)
+					}
+					else {
+						changeAttraction(-15)
+					}
+					currentTopic.closed = true;
+					currentTopic = null;
+					generateHub(answer[2]);
+				}
 				break;
 		}
 	}
