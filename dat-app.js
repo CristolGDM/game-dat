@@ -49,6 +49,7 @@ var DatingController = function($scope, $http){
 			topics: {
 				today: {
 					name: "today",
+					open: "So what did you do today?",
 					text: "I went to a Thai restaurant with my friends, it was fun!",
 					answers: [
 						["Oh I love Thai food! Where was it?", "positive"],
@@ -65,10 +66,16 @@ var DatingController = function($scope, $http){
 							["Ah I hate that place", "negative", "Ah, I see..."],
 							["Ah, green poop tonight haha!", "joke", "Nooo, why are you saying that haha!"]
 						]
+					},
+					conclude: {
+						question: "We should go to that restaurant together next week.",
+						success: "Yeah we should! Do you have Instagram?",
+						failure: "Oh hmmmm... I'm busy next week... And next month too..."
 					}
 				},
 				weekend: {
 					name: "weekend",
+					open: "Doing anything cool this weekend?",
 					text: "Hmmm I'll probably go do some shopping with my sister.",
 					answers: [
 						["Great, I love buying new clothes too! What will you get?", "positive"],
@@ -85,10 +92,16 @@ var DatingController = function($scope, $http){
 							["It's kind of a waste of money no?", "negative", "I guess..."],
 							["Ah, someone has been eating too much mac & cheese, I see.", "joke", "Nooo, not that much!"]
 						]
+					},
+					conclude: {
+						question: "Maybe we can go shopping together and help each other, sounds fun.",
+						success: "That's a great idea, I wanted a new dress actually! Do you have Snapchat?",
+						failure: "Oh I think I bought enough clothes to last me ten years, at least..."
 					}
 				},
 				hobbies: {
 					name: "hobbies",
+					open: "What are your hobbies?",
 					text: "I like music, movies, going out.",
 					answers: [
 						["Oh I'm really into movies actually, what's your favorite?", "positive"],
@@ -105,6 +118,11 @@ var DatingController = function($scope, $http){
 							["Ugh of course a chick flick.", "negative", "Okay..."],
 							["Yeah I understand, I cried almost as much as when I watched the Spongebob movie.", "joke", "Haha what are you saying!"]
 						]
+					},
+					conclude: {
+						question: "Well I just rented this new amazing romcom, wanna watch it together?",
+						success: "Yeah, definitely! Do you have Facebook?",
+						failure: "I've seen it already, sorry."
 					}
 				}
 			}
@@ -158,24 +176,16 @@ var DatingController = function($scope, $http){
 
 		var answers = [];
 
-		/* Once a topic is closed, you can't talk about it anymore */
-		if (!currentCharacter.topics.today.closed) {
-			answers.push(["So what did you do today?", "topic", "today"]);
-		/* But you can try to conclude based on it */
-		} else if (currentCharacter.topics.today.more) {
-			answers.push(["We should go to that restaurant together next week.", "conclude", "today"]);
-		}
-
-		if (!currentCharacter.topics.weekend.closed) {
-			answers.push(["Doing anything cool this weekend?", "topic", "weekend"]);
-		} else if (currentCharacter.topics.weekend.more) {
-			answers.push(["Maybe we can go shopping together and help each other, sounds fun.", "conclude", "weekend"]);
-		}
-
-		if (!currentCharacter.topics.hobbies.closed) {
-			answers.push(["What are your hobbies?", "topic", "hobbies"]);
-		} else if (currentCharacter.topics.hobbies.more) {
-			answers.push(["Well I would be willing to watch it again with someone cool, if you're interested.", "conclude", "hobbies"]);
+		for (topicName in currentCharacter.topics) {
+			let topic = currentCharacter.topics[topicName];
+			/* Once a topic is closed, you can't talk about it anymore */
+			if (!topic.closed) {
+				answers.push([topic.open, "topic", topic.name]);
+			}
+			/* But you can try to conclude based on it, if you asked for more info */
+			else if (topic.more && !topic.rejected) {
+				answers.push([topic.conclude.question, "conclude", topic.name])
+			}
 		}
 
 		generateScreen(text, answers);
@@ -187,6 +197,8 @@ var DatingController = function($scope, $http){
 	 * @param {array} 	answers - answers to offer as choice to the user
 	 */
 	function generateScreen(text, answers) {
+		if (answers == null) answers = [];
+
 		var displayedAnswers = [];
 
 		for (var i = 0; i < answers.length; i++) {
@@ -331,6 +343,18 @@ var DatingController = function($scope, $http){
 					generateHub(answer[2]);
 				}
 				break;
+
+			case "conclude":
+				if (currentCharacter.attraction >= 70) {
+					view.currentFace = currentCharacter.faces.concludeYes;
+					generateScreen(currentCharacter.topics[answer[2]].conclude.success);
+				}
+				else {
+					if(currentCharacter.topics[answer[2]].negatived) changeAttraction(-5);
+					currentCharacter.topics[answer[2]].rejected = true;
+					view.currentFace = currentCharacter.faces.concludeNo;
+					generateHub(currentCharacter.topics[answer[2]].conclude.failure);
+				}
 		}
 	}
 
