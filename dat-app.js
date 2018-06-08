@@ -130,7 +130,7 @@ var DatingController = function($scope, $http){
 	 * Called when starting the app
 	 */
 	function onInit() {
-		currentCharacter = characters["Futsuko"];
+		currentCharacter = characters["Tsuyoko"];
 		view.facemap = currentCharacter.facemap;
 
 		/* We generate the first hub */

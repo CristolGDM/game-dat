@@ -7,9 +7,9 @@ var characters = {
 			nice: [2, 4],
 			happy: [1,0],
 			angry: [2,2],
-			awkward: [3, 2],
-			concludeYes: [0, 5],
-			concludeNo: [4, 0]
+			awkward: [3,2],
+			concludeYes: [0,5],
+			concludeNo: [4,0]
 		},
 
 		hi: "Hello, nice to meet you!",
@@ -91,6 +91,102 @@ var characters = {
 					question: "Well I just rented this new amazing romcom, wanna watch it together?",
 					success: "Yeah, definitely! Do you have Facebook?",
 					failure: "I've seen it already, sorry."
+				}
+			}
+		}
+	},
+	"Tsuyoko": {
+		attraction: 50,
+		facemap: "./dat-tsuyoko.png",
+		faces: {
+			default: [0,0],
+			nice: [1,7],
+			happy: [0,2],
+			angry: [0, 7],
+			awkward: [2,5],
+			concludeYes: [2,1],
+			concludeNo: [0,2]
+		},
+
+		hi: "Hey there",
+
+		topics: {
+			today: {
+				name: "today",
+				open: "So what did you do today?",
+				text: "Like, I played soccer with my friends and shit",
+				answers: [
+					["Haha soccer is cool, I do it from time to time too. Who won?", "positive"],
+					["I see.", "neutral"],
+					["Who won?", "more"],
+					["Ugh soccer is a dumb sport.", "negative"],
+					["That's why you're so buff! Who won?", "joke"]
+				],
+				additional: {
+					text: "Well I beat the shit out of them, fucking weaklings.",
+					answers: [
+						["Bet you can't beat me", "positive", "We'll see to that!"],
+						["Okay.", "neutral"],
+						["Jeez why so competitive, it's annoying", "negative", "Well fuck you too mate"],
+						["Oh I see, they were three years old, right?", "joke", "Haha no they were not"]
+					]
+				},
+				conclude: {
+					question: "Wanna see if you can beat a grown ass man next time?",
+					success: "I'm sure you would like that - you're on!",
+					failure: "Wow you managed to make it sound so gross... Thanks but no thanks"
+				}
+			},
+			weekend: {
+				name: "weekend",
+				open: "Doing anything cool this weekend?",
+				text: "Yeah I'm going to the beach and shit",
+				answers: [
+					["Oh I love going to the beach! For swimming?", "positive"],
+					["I see.", "neutral"],
+					["Oh what's your plan there?", "more"],
+					["Damn you never do anything intellectual, like reading or watching YouTube videos about quantum theory?", "negative"],
+					["Oooh, that's why you're so tan. You're going to go there and tan the whole weekend right?", "joke"]
+				],
+				additional: {
+					text: "Well for now the plan is just to do some surfing, barbecue, and getting wasted.",
+					answers: [
+						["That sounds awesome, I might want to do that too this summer", "positive", "You should! And don't forget to invite me"],
+						["Okay.", "neutral"],
+						["Jeez that's so dumb.", "negative", "Oh shut up, cuntface."],
+						["That's my three favorite hobbies, we have so much in common!", "joke", "Yay, high-five!"]
+					]
+				},
+				conclude: {
+					question: "Actually wanna hang out at my place next week? No swimming, but barbecue and getting wasted are definitely possible",
+					success: "Sounds great! I'm free Sunday, works for you?",
+					failure: "Nah, I'm busy. Dentist appointment."
+				}
+			},
+			hobbies: {
+				name: "hobbies",
+				open: "What are your hobbies?",
+				text: "I'm really into music, but like, weird music",
+				answers: [
+					["Oh I like weird music too! What's yours?", "positive"],
+					["I see.", "neutral"],
+					["Like what?", "more"],
+					["Meh, if it's not classical you shouldn't even call it 'music'.", "negative"],
+					["Oh really? Weird enough so if you tell me I'll run away or not?", "joke"]
+				],
+				additional: {
+					text: "Well actually you probably don't know but it's... it's the Denpa Gumi. Don't make fun of me.",
+					answers: [
+						["Oh my god it's my favorite group too, they're amazing!", "positive", "Really?! That's our shameful secret then!"],
+						["Okay.", "neutral"],
+						["Oh god, seriously? Are you fucking five years old?", "negative", "Why, that's your type, pedo?"],
+						["Hahahaha that's amazing, didn't expect that, I like it!", "joke", "Yeah, that's why I never tell people"]
+					]
+				},
+				conclude: {
+					question: "I heard Denpa Gumi had an event in Akiba next Tuesday, wanna go check it out?",
+					success: "I was already planning on going! Where do you wanna meet?",
+					failure: "Ah I got my part-time work on that day, sorry."
 				}
 			}
 		}
