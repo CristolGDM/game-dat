@@ -1,7 +1,11 @@
 var characters = {
 	"Futsuko": {
 		attraction: 50,
-		facemap: "./dat-futsuko.png",
+		face: {
+			location: "./dat-futsuko-column.png",
+			width: 535,
+			height: 551
+		},
 		faces: {
 			default: [0,0],
 			nice: [2, 4],
@@ -97,15 +101,19 @@ var characters = {
 	},
 	"Tsuyoko": {
 		attraction: 50,
-		facemap: "./dat-tsuyoko.png",
+		face: {
+			location: "./dat-tsuyoko-column.png",
+			width: 688,
+			height: 556
+		},
 		faces: {
-			default: [0,0],
-			nice: [1,7],
-			happy: [0,2],
-			angry: [0, 7],
-			awkward: [2,5],
-			concludeYes: [2,1],
-			concludeNo: [0,2]
+			default: 0,
+			nice: 15,
+			happy: 17,
+			angry: 7,
+			awkward: 21,
+			concludeYes: 18,
+			concludeNo: 2
 		},
 
 		hi: "Hey there",

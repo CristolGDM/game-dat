@@ -15,7 +15,6 @@ var DatingController = function($scope, $http){
 	/*******************/
 	/* Scope variables */
 	/*******************/
-	view.currentFace = [0, 0];
 
 	/*******************/
 	/* Scope functions */
@@ -131,7 +130,8 @@ var DatingController = function($scope, $http){
 	 */
 	function onInit() {
 		currentCharacter = characters["Tsuyoko"];
-		view.facemap = currentCharacter.facemap;
+		view.face = currentCharacter.face;
+		view.currentFace = currentCharacter.faces.default;
 
 		/* We generate the first hub */
 		generateHub(currentCharacter.hi);

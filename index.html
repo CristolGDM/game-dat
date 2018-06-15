@@ -16,11 +16,12 @@
 		<div class="attraction-bar" style="background: linear-gradient(0deg, #ff5a05 {{date.getAttractionPercentage()}}%, rgba(0,0,0,0) 0%)"></div>
 		<div class="character-image" 
 			style="
-				background-image: url({{date.facemap}});
-				background-position-x: {{(date.currentFace[0] * 24.9 +.2)}}%;
-				background-position-y: {{(date.currentFace[1] * 20 +.2)}}%
+				background-image: url({{date.face.location}});
+				background-position-y: {{(date.currentFace * 3.70)}}%;
+				max-width: {{100*date.face.width / date.face.height}}vh;
+				max-height: {{100*date.face.height / date.face.width}}vw;
 			"
-		><img src="http://via.placeholder.com/615x630" class="character-image--placeholder" /></div>
+		></div>
 		<div class="text-area">
 			<p class="she-says">"{{date.sheSays}}"</p>
 
