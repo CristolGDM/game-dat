@@ -108,12 +108,13 @@ var characters = {
 		},
 		faces: {
 			default: 0,
-			nice: 15,
-			happy: 17,
-			angry: 7,
-			awkward: 21,
-			concludeYes: 18,
-			concludeNo: 2
+			nice: 61.534,
+			happy: 69.232,
+			angry: 26.893,
+			mad: 53.8,
+			awkward: 49.987,
+			concludeYes: 73.023,
+			concludeNo: 7.69
 		},
 
 		hi: "Hey there",

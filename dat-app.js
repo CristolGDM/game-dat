@@ -51,6 +51,10 @@ var DatingController = function($scope, $http){
 				view.currentFace = currentCharacter.faces.angry;
 				break;
 
+			case -15:
+				view.currentFace = currentCharacter.faces.mad;
+				break;
+
 			case 5:
 				view.currentFace = currentCharacter.faces.nice;
 				break;
@@ -238,7 +242,7 @@ var DatingController = function($scope, $http){
 						changeAttraction(-15)
 					}
 					else {
-						changeAttraction(-15)
+						changeAttraction(-10)
 					}
 					currentTopic.closed = true;
 					currentTopic = null;
