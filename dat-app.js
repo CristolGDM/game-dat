@@ -133,7 +133,7 @@ var DatingController = function($scope, $http){
 	 * Called when starting the app
 	 */
 	function onInit() {
-		currentCharacter = characters["Tsuyoko"];
+		currentCharacter = characters["Futsuko"];
 		view.face = currentCharacter.face;
 		view.currentFace = currentCharacter.faces.default;
 

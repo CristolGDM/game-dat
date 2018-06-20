@@ -3,17 +3,18 @@ var characters = {
 		attraction: 50,
 		face: {
 			location: "./dat-futsuko-column.png",
-			width: 535,
-			height: 551
+			width: 540,
+			height: 550
 		},
 		faces: {
-			default: [0,0],
-			nice: [2, 4],
-			happy: [1,0],
-			angry: [2,2],
-			awkward: [3,2],
-			concludeYes: [0,5],
-			concludeNo: [4,0]
+			default: 0,
+			nice: 60.02,
+			happy: 24.04,
+			angry: 72.01,
+			mad: 4.03,
+			awkward: 72.01,
+			concludeYes: 20.01,
+			concludeNo: 84.03
 		},
 
 		hi: "Hello, nice to meet you!",
@@ -104,17 +105,17 @@ var characters = {
 		face: {
 			location: "./dat-tsuyoko-column.png",
 			width: 688,
-			height: 556
+			height: 562
 		},
 		faces: {
-			default: 0,
-			nice: 61.534,
-			happy: 69.232,
-			angry: 26.893,
-			mad: 53.8,
-			awkward: 49.987,
-			concludeYes: 73.023,
-			concludeNo: 7.69
+			default: 0.01,
+			nice: 61.51,
+			happy: 69.20,
+			angry: 26.91,
+			mad: 53.82,
+			awkward: 49.98,
+			concludeYes: 73.05,
+			concludeNo: 7.70
 		},
 
 		hi: "Hey there",
@@ -142,7 +143,7 @@ var characters = {
 				},
 				conclude: {
 					question: "Wanna see if you can beat a grown ass man next time?",
-					success: "I'm sure you would like that - you're on!",
+					success: "I-I'm sure you would like that - you're on!",
 					failure: "Wow you managed to make it sound so gross... Thanks but no thanks"
 				}
 			},
@@ -168,7 +169,7 @@ var characters = {
 				},
 				conclude: {
 					question: "Actually wanna hang out at my place next week? No swimming, but barbecue and getting wasted are definitely possible",
-					success: "Sounds great! I'm free Sunday, works for you?",
+					success: "S-s-sounds great! I'm free Sunday, works for you?",
 					failure: "Nah, I'm busy. Dentist appointment."
 				}
 			},
@@ -194,7 +195,7 @@ var characters = {
 				},
 				conclude: {
 					question: "I heard Denpa Gumi had an event in Akiba next Tuesday, wanna go check it out?",
-					success: "I was already planning on going! Where do you wanna meet?",
+					success: "A-actually I was already planning on going! Where do you wanna meet?",
 					failure: "Ah I got my part-time work on that day, sorry."
 				}
 			}
