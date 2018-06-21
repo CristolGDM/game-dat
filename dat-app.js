@@ -15,11 +15,13 @@ var DatingController = function($scope, $http){
 	/*******************/
 	/* Scope variables */
 	/*******************/
+	view.remainingDialog = [];
 
 	/*******************/
 	/* Scope functions */
 	/*******************/
 	view.$onInit = onInit;
+	view.advanceDialog = advanceDialog;
 	view.getAttractionPercentage = getAttractionPercentage;
 	view.processAnswer = processAnswer;
 
@@ -32,6 +34,21 @@ var DatingController = function($scope, $http){
 	/*******************/
 	/* Local functions */
 	/*******************/
+
+	/*
+	 * Sets the dialog for the interlocutor. If there is just one sentence it processes it as is, else it displays the first sentence and saves the remainder
+	 * @param {string|array} text - Text to process
+	 */
+	function advanceDialog(text){
+		if(typeof text === 'string'){
+			view.remainingDialog = [];
+			view.sheSays = text;
+		}
+		else if (text.length !== 0) {
+			view.sheSays = text[0];
+			view.remainingDialog = text.shift();
+		}
+	}
 
 	/*
 	 * Changes current expression by the given amount, and adjust character's face based on the amount changed
@@ -121,7 +138,7 @@ var DatingController = function($scope, $http){
 				displayedAnswers.push(["What are your hobbies?", "topic", "hobbies"]);
 			}
 		}
-		view.sheSays = text;
+		advanceDialog(text);
 		view.heSays = shuffle(displayedAnswers);
 	}
 
