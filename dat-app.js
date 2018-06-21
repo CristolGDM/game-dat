@@ -46,7 +46,8 @@ var DatingController = function($scope, $http){
 		}
 		else if (text.length !== 0) {
 			view.sheSays = text[0];
-			view.remainingDialog = text.shift();
+			view.remainingDialog = text;
+			view.remainingDialog.shift();
 		}
 	}
 
@@ -150,7 +151,7 @@ var DatingController = function($scope, $http){
 	 * Called when starting the app
 	 */
 	function onInit() {
-		currentCharacter = characters["Futsuko"];
+		currentCharacter = characters["Hikiko"];
 		view.face = currentCharacter.face;
 		view.currentFace = currentCharacter.faces.default;
 

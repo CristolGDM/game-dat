@@ -200,5 +200,106 @@ var characters = {
 				}
 			}
 		}
+	},
+	"Hikiko": {
+		attraction: 50,
+		face: {
+			location: "./dat-hikiko-column.png",
+			width: 584,
+			height: 569
+		},
+		faces: {
+			default: 0,
+			nice: 31.56,
+			happy: 26.30,
+			angry: 73.64,
+			mad: 21.04,
+			awkward: 5.26,
+			concludeYes: 10.52,
+			concludeNo: 68.38
+		},
+
+		hi: ["Hello, so nice to meet you!", "I'm Hikiko! But you can call me Hiki!", "Or not it's fine!", "I'm over 18!", "How are you?!"],
+
+		topics: {
+			today: {
+				name: "today",
+				open: "So what did you do today?",
+				text: ["I didn't do anything it was amazing! Like I just stayed home and watched anime", "Omg lol so me right haha!"],
+				answers: [
+					["Yay I like a good lazy day too! What did you watch?", "positive"],
+					["I see.", "neutral"],
+					["What did you watch?", "more"],
+					["Ugh that sounds boring", "negative"],
+					["Oh aren't you a sweet couch potato haha! What did you watch?", "joke"]
+				],
+				additional: {
+					text: ["Well I watch a bit of everything!", "Like I really like shounen like my favorite is One Piece and I think Sanji is so cool!", "And Naruto too it's my favorite!"],
+					answers: [
+						["Oooh I really like those too!", "positive", ["Seriously?!"," Omg that's crazy!!","Who's your favorite character?!","Nevermind it has to be Sanji!"]],
+						["Okay.", "neutral"],
+						["Jeez that's fucking normie stuff", "negative", ["Huh?", "What's a normie?", "That's very rude fedora-san!"]],
+						["My favorite anime is Bojack Horseman", "joke", ["Oh what's that?!", "Is it that horsegirl idol anime?!", "Or is he fighting people or something?!", "I'll watch!"]]
+					]
+				},
+				conclude: {
+					question: "I'm good at doing nothing, let's do it together",
+					success: ["Damn right boy.", "We'll 'do it', better stretch.", "(I'm totally 18 by the way)"],
+					failure: ["Ummm thanks no thanks!", "I prefer doing nothing alone!", "Or at least not with you!"]
+				}
+			},
+			weekend: {
+				name: "weekend",
+				open: "Doing anything cool this weekend?",
+				text: ["Ummm my plan is to just stay in my room and play games!", "Like lots of games!", "I'm such a roxxor lol xoxo l33t omg!"],
+				answers: [
+					["Girl, I love playing games! What do you play?", "positive"],
+					["I see.", "neutral"],
+					["What are you gonna play?", "more"],
+					["Don't speak like that, you're giving me cancer", "negative"],
+					["Play games like Othello? Such a gamer!", "joke"]
+				],
+				additional: {
+					text: ["Probably Dark Souls!","But I just finished my 10th playthrough SL1 so I'm a bit bored!","So maybe Skyrim!","My 640 modlist is almost ready, finally managed to integrate SoS and SLab!","Just wondering if FlowerGirls is worth it hihi!"],
+					answers: [
+						["I love those games, and that sounds very creative, congrats to you.", "positive", ["Yay I can express myself!","SLsubmit is very good too!","I can make you into a NPC!"]],
+						["Okay.", "neutral"],
+						["Git gud cunt.", "negative", ["Oh you speak like the guy I invaded last night", "Is that you?"]],
+						["I love flowers.", "joke", ["Yay they're so pretty!", "And they do what I tell them!"]]
+					]
+				},
+				conclude: {
+					question: "What about you show me how good you are at those games?",
+					success: ["Oh yeah baby.","I'll show you things even LoversLab wouldn't dare showing.","I'm 18."],
+					failure: ["Oh sorry I don't play with my inferiors...", "But keep trying!"]
+				}
+			},
+			hobbies: {
+				name: "hobbies",
+				open: "What are your hobbies?",
+				text: ["Every nerd stuff", "Because I'm a big nerd!", "Very nerdy nerd nerd!"],
+				answers: [
+					["I'm a nerd too! Anything in particular?", "positive"],
+					["I see.", "neutral"],
+					["Anything in particular?", "more"],
+					["Oh jesus fucking christ you're one of those", "negative"],
+					["Wow calm down Nerdy McNerdface", "joke"]
+				],
+				additional: {
+					text: ["I really love fanart!", "And cosplay!", "Of everything!", "Do you know ClopClop?!"],
+					answers: [
+						["I really love fanart too! You should show me your favorites!", "positive", ["Oh yay yay daddy yay!","Like there is this one with Rainbowdash and a bear!", "It's like a Romero movie it's beautiful!"]],
+						["Okay.", "neutral"],
+						["You talk too fucking mucchhhh", "negative", ["Yay yay thank you!"]],
+						["You should cosplay then! Like Kratos, would suit you", "joke", ["Oh you think I would be cute?!","Thank you daddy yay thank you!","You can cosplay as Mami Tomoe!","She has a really cool scene!"]]
+					]
+				},
+				conclude: {
+					question: "Actually, wanna prepare a cosplay together for next summer?",
+					success: ["Fuck yeah I want", "I'll cosplay as a poney", "Cloppyclop me until I walk as straight as Elton John.", "It's okay because I'm 18."],
+					failure: ["Umm I don't think you can do cosplay sorry...", "Unless you do a Jabba cosplay!", "But I don't like Star Wars sorry!"]
+				}
+			}
+		}
 	}
 }
