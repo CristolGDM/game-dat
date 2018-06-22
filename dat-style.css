@@ -7,7 +7,15 @@
 	background-size: cover
 }
 
-.screen-overlay {
+.screen-layer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 0;
+}
+
+.screen-layer {
 	position: fixed;
 	bottom: 0;
 	left: 0;
@@ -38,6 +46,11 @@
 	height: 100vh;
 	background-repeat: no-repeat;
 	background-size: 100%;
+	opacity: 0;
+	transition: opacity linear .5s;
+}
+.character-image.show {
+	opacity: 1;
 }
 
 .text-area {
@@ -58,21 +71,21 @@
 	justify-content: space-evenly;
 }
 
-.she-says, .he-says {
+.dialog, .option {
 	color: white;
 	font-size: 25px;
 	margin: 0;
 	font-family: 'Open Sans', sans-serif;
 }
 
-.she-says {
+.dialog {
 	padding-bottom: 15px
 }
 
-.he-says {
+.option {
 	padding-left: 60px;
 	cursor: pointer;
 }
-.he-says:hover {
+.option:hover {
 	text-decoration: underline;
 }

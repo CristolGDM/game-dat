@@ -15,6 +15,9 @@ var DatingController = function($scope, $http){
 	/*******************/
 	/* Scope variables */
 	/*******************/
+	view.characterMenu = true;
+	view.currentFace = 0;
+	view.face = {width: 100, height: 100};
 	view.remainingDialog = [];
 
 	/*******************/
@@ -24,6 +27,7 @@ var DatingController = function($scope, $http){
 	view.advanceDialog = advanceDialog;
 	view.getAttractionPercentage = getAttractionPercentage;
 	view.processAnswer = processAnswer;
+	view.selectCharacter = selectCharacter;
 
 	/*******************/
 	/* Local variables */
@@ -151,18 +155,19 @@ var DatingController = function($scope, $http){
 	 * Called when starting the app
 	 */
 	function onInit() {
-		currentCharacter = characters["Hikiko"];
-		view.face = currentCharacter.face;
-		view.currentFace = currentCharacter.faces.default;
+		view.characters = shuffle(Object.keys(characters));
 
-		/* We generate the first hub */
-		generateHub(currentCharacter.hi);
+		view.preloadImages = [];
+		for (character in characters) {
+			view.preloadImages.push(characters[character].face);
+		}
 
 		/* We get a random image from reddit as background */
 		$http.get('https://www.reddit.com/r/ImaginaryCityscapes/hot.json?sort=new')
 			.then(function(response){
 				var array = response.data.data.children;
 				var index = Math.floor(Math.random()*array.length)
+				view.sheSays = "Such a nice day in " + array[index].data.title.split(" by")[0] + "... Who are you going to talk to?";
 				view.backgroundImage = array[index].data.url;
 				}
 			);
@@ -280,6 +285,16 @@ var DatingController = function($scope, $http){
 					generateHub(currentCharacter.topics[answer[2]].conclude.failure);
 				}
 		}
+	}
+
+	function selectCharacter(characterName) {
+		currentCharacter = characters[characterName];
+		view.face = currentCharacter.face;
+		view.currentFace = currentCharacter.faces.default;
+		view.characterMenu = false;
+
+		/* We generate the first hub */
+		generateHub(currentCharacter.hi);
 	}
 
 	/*
