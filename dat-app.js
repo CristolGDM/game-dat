@@ -242,13 +242,14 @@ var DatingController = function($scope, $http){
 			/* Neutral "asking for more", we just go to the next screen */
 			case "more":
 				currentTopic.more = true;
-				changeAttraction(0)
+				changeAttraction(0);
 				generateScreen(currentTopic.additional.text, currentTopic.additional.answers);
+				break;
 
 			/* Neutral answer, we close the topic and go back to the hub, no attraction change */
 			case "neutral":
 				currentTopic.closed = true;
-				changeAttraction(0)
+				changeAttraction(0);
 				generateHub();
 				break;
 
