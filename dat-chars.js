@@ -8,10 +8,10 @@ var characters = {
 		},
 		faces: {
 			default: 0,
-			nice: 60.02,
-			happy: 24.04,
-			angry: 72.01,
-			mad: 4.03,
+			nice: 24.04,
+			happy: 60.02,
+			angry: 4.03,
+			mad: 32.02,
 			awkward: 72.01,
 			concludeYes: 20.01,
 			concludeNo: 84.03
