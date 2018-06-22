@@ -184,7 +184,7 @@ var DatingController = function($scope, $http){
 			case "topic":
 				/* If you were already talking about something else, the topic is closed, and you lose some attraction */
 				if (currentTopic != null && currentTopic.name != null) {
-					changeAttraction(5);
+					changeAttraction(-5);
 					currentTopic.closed = true;
 				}
 				else {
