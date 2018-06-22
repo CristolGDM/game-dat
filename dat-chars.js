@@ -206,17 +206,17 @@ var characters = {
 		face: {
 			location: "./dat-hikiko-column.png",
 			width: 584,
-			height: 569
+			height: 560
 		},
 		faces: {
 			default: 0,
-			nice: 31.56,
-			happy: 26.30,
-			angry: 73.64,
-			mad: 21.04,
-			awkward: 5.26,
-			concludeYes: 10.52,
-			concludeNo: 68.38
+			nice: 30.44,
+			happy: 21.75,
+			angry: 65.23,
+			mad: 17.38,
+			awkward: 4.36,
+			concludeYes: 8.70,
+			concludeNo: 60.87
 		},
 
 		hi: ["Hello, so nice to meet you!", "I'm Hikiko! But you can call me Hiki!", "Or not it's fine!", "I'm over 18!", "How are you?!"],
