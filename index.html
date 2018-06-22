@@ -13,7 +13,7 @@
 		<p style="border: 1px solid red; color:red; position: fixed; top: 20px; left: 50%; padding: 5px 15px; font-size: 16px; display: none">
 			data:
 		</p>
-		<div class="attraction-bar" ng-if="!date.characterMenu" style="background: linear-gradient(0deg, #ff5a05 {{date.getAttractionPercentage()}}%, rgba(0,0,0,0) 0%)"></div>
+		<div class="attraction-bar" ng-class="{'show': !date.characterMenu}" style="background: linear-gradient(0deg, #ff5a05 {{date.getAttractionPercentage()}}%, rgba(0,0,0,0) 0%)"></div>
 		<div class="character-image"
 			ng-class="{'show': !date.characterMenu}"
 			style="
