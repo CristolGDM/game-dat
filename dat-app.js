@@ -46,10 +46,10 @@ var DatingController = function($scope, $http){
 	function advanceDialog(text){
 		if(typeof text === 'string'){
 			view.remainingDialog = [];
-			view.sheSays = text;
+			view.sheSays = '"' + text + '"';
 		}
 		else if (text.length !== 0) {
-			view.sheSays = text[0];
+			view.sheSays = '"' + text[0] + '"';
 			view.remainingDialog = text;
 			view.remainingDialog.shift();
 		}
