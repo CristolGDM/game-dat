@@ -7,6 +7,14 @@
 	background-size: cover
 }
 
+.screen-overlay {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 0;
+}
+
 .attraction-bar {
 	position: fixed;
 	left: 20px;
