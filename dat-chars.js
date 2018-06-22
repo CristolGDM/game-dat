@@ -11,7 +11,7 @@ var characters = {
 			nice: 24.04,
 			happy: 60.02,
 			angry: 4.03,
-			mad: 32.02,
+			mad: 16.01,
 			awkward: 72.01,
 			concludeYes: 20.01,
 			concludeNo: 84.03
