@@ -13,9 +13,9 @@
 		<p style="border: 1px solid red; color:red; position: fixed; top: 20px; left: 50%; padding: 5px 15px; font-size: 16px; display: none">
 			data:
 		</p>
-		<div class="attraction-bar" ng-class="{'show': !date.characterMenu}" style="background: linear-gradient(0deg, #ff5a05 {{date.getAttractionPercentage()}}%, rgba(0,0,0,0) 0%)"></div>
+		<div class="attraction-bar" ng-class="{'show': date.face.location.length > 0}" style="background: linear-gradient(0deg, #ff5a05 {{date.getAttractionPercentage()}}%, rgba(0,0,0,0) 0%)"></div>
 		<div class="character-image"
-			ng-class="{'show': !date.characterMenu}"
+			ng-class="{'show': date.face.location.length > 0}"
 			style="
 				background-image: url({{date.face.location}});
 				background-position-y: {{date.currentFace}}%;
@@ -24,9 +24,11 @@
 			"
 		></div>
 		<div class="text-area">
-			<p class="dialog">{{date.sheSays}}</p>
+			<p class="dialog" ng-show="date.sheSays.length > 0">{{date.sheSays}}</p>
 
-			<p class="option" ng-repeat="character in date.characters" ng-click="date.selectCharacter(character)" ng-show="date.characterMenu">- {{character}}</p>
+			<p class="dialog" ng-show="date.selectCharacterText.length > 0">{{date.selectCharacterText}}</p>
+
+			<p class="option" ng-repeat="character in date.characters" ng-click="date.selectCharacter(character)" ng-show="date.selectCharacterText.length > 0">- {{character}}</p>
 
 			<p class="option" ng-repeat="answer in date.heSays" ng-click="date.processAnswer(answer)" ng-show="date.remainingDialog.length === 0">- {{answer[0]}}</p>
 		</div>

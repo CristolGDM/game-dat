@@ -4,14 +4,17 @@ var DatingController = function($scope, $http){
 	/* Local variables */
 	/*******************/
 	var view = this;
+	var currentTopic;
+	var currentCharacter;
+	var plannedDates = 0;
 
 	/*******************/
 	/* Scope variables */
 	/*******************/
-	view.characterMenu = true;
 	view.currentFace = 0;
 	view.face = {width: 100, height: 100};
 	view.remainingDialog = [];
+	view.selectCharacterText = "";
 
 	/*******************/
 	/* Scope functions */
@@ -21,12 +24,6 @@ var DatingController = function($scope, $http){
 	view.getAttractionPercentage = getAttractionPercentage;
 	view.processAnswer = processAnswer;
 	view.selectCharacter = selectCharacter;
-
-	/*******************/
-	/* Local variables */
-	/*******************/
-	var currentTopic;
-	var currentCharacter;
 
 	/*******************/
 	/* Local functions */
@@ -83,6 +80,43 @@ var DatingController = function($scope, $http){
 		currentCharacter.attraction += amount;
 	}
 
+	function finishCharacter(){
+		var index = view.characters.indexOf(currentCharacter.name);
+		if (index !== -1){
+			view.characters.splice(index, 1);
+		}
+
+		var endingText = "";
+
+		console.log(currentCharacter.failures, Object.keys(currentCharacter.topics).length)
+
+		if (currentCharacter.concluded) {
+			endingText = "Looks like you got a date with " + currentCharacter.name + ", congrats!";
+			plannedDates += 1;
+		}
+		else {
+			endingText = "Looks like you ran out of things to say..."
+		}
+
+		if (view.characters.length === 0) {
+			endingText += " And it looks like you spoke with everybody!";
+			if (plannedDates === 0) {
+				endingText += " Too bad you couldn't get any date... Hopefully you will have a better time next time!";
+			}
+			else if (plannedDates === 1) {
+				endingText += " You even have a date planned soon, better get ready!";
+			}
+			else {
+				endingText += " You even have " + plannedDates + " dates planned, someone's going to be busy!";
+			}
+		}
+		else {
+			endingText += " Want to speak to someone else?";
+		}
+
+		view.selectCharacterText = endingText;
+	}
+
 	/*
 	 * Generates the main hub from which topics are selected
 	 * @param {String} [text] - Text to be displayed as the girl's dialog. If nothing, it defaults to "..."
@@ -136,11 +170,20 @@ var DatingController = function($scope, $http){
 				displayedAnswers.push(["What are your hobbies?", "topic", "hobbies"]);
 			}
 		}
+
+		if (displayedAnswers.length === 0) {
+			finishCharacter();
+		}
+
 		advanceDialog(text);
 		view.heSays = shuffle(displayedAnswers);
 	}
 
 	function getAttractionPercentage() {
+		if (currentCharacter == null) {
+			return 0
+		};
+
 		return Math.min(100,Math.max(0, currentCharacter.attraction));
 	}
 
@@ -160,7 +203,7 @@ var DatingController = function($scope, $http){
 			.then(function(response){
 				var array = response.data.data.children;
 				var index = Math.floor(Math.random()*array.length)
-				view.sheSays = "Such a nice day in " + array[index].data.title.split(" by")[0] + "... Who are you going to talk to?";
+				view.selectCharacterText = "Such a nice day in " + array[index].data.title.split(" by")[0] + "... Who are you going to talk to?";
 				view.backgroundImage = array[index].data.url;
 				}
 			);
@@ -270,6 +313,7 @@ var DatingController = function($scope, $http){
 			case "conclude":
 				if (currentCharacter.attraction >= 70) {
 					view.currentFace = currentCharacter.faces.concludeYes;
+					currentCharacter.concluded = true;
 					generateScreen(currentCharacter.topics[answer[2]].conclude.success);
 				}
 				else {
@@ -285,7 +329,7 @@ var DatingController = function($scope, $http){
 		currentCharacter = characters[characterName];
 		view.face = currentCharacter.face;
 		view.currentFace = currentCharacter.faces.default;
-		view.characterMenu = false;
+		view.selectCharacterText = "";
 
 		/* We generate the first hub */
 		generateHub(currentCharacter.hi);

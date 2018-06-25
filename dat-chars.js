@@ -1,5 +1,6 @@
 var characters = {
 	"Futsuko": {
+		name: "Futsuko",
 		attraction: 50,
 		face: {
 			location: "./dat-futsuko-column.png",
@@ -101,6 +102,7 @@ var characters = {
 		}
 	},
 	"Tsuyoko": {
+		name: "Tsuyoko",
 		attraction: 50,
 		face: {
 			location: "./dat-tsuyoko-column.png",
@@ -202,6 +204,7 @@ var characters = {
 		}
 	},
 	"Hikiko": {
+		name: "Hikiko",
 		attraction: 50,
 		face: {
 			location: "./dat-hikiko-column.png",
