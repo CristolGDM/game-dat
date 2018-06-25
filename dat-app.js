@@ -1,15 +1,8 @@
+var DatingController = function($scope, $http){
+
 	/*******************/
 	/* Local variables */
 	/*******************/
-
-	/*
-	 * Fix face alignment
-	 * Selection menu
-	 * More characters
-	 * Can use keyboard
-	 */
-
-var DatingController = function($scope, $http){
 	var view = this;
 
 	/*******************/
