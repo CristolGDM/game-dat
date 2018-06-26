@@ -1,4 +1,2 @@
-- Restart the game
-- Change font
 - New character (Otoko)
 - Can use keyboard

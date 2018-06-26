@@ -12,6 +12,7 @@ var DatingController = function($scope, $http){
 	/* Scope variables */
 	/*******************/
 	view.currentFace = 0;
+	view.selectedOption = 0;
 	view.face = {width: 100, height: 100};
 	view.remainingDialog = [];
 	view.selectCharacterText = "";
@@ -24,6 +25,28 @@ var DatingController = function($scope, $http){
 	view.getAttractionPercentage = getAttractionPercentage;
 	view.processAnswer = processAnswer;
 	view.selectCharacter = selectCharacter;
+
+	/*******************/
+	/* Key  listeners  */
+	/*******************/
+	window.onkeyup = function(e) {
+		var key = e.keyCode ? e.keyCode : e.which;
+
+		var upKey = 38;
+		var downKey = 40;
+		var enterKey = 13;
+		var spaceKey = 32;
+
+		$scope.$apply(function(){
+			if (key == upKey) {
+				view.selectedOption = view.selectedOption === 0 ? view.heSays.length -1 : view.selectedOption -1;
+			} else if (key == downKey) {
+				view.selectedOption = view.selectedOption === view.heSays.length -1 ? 0 : view.selectedOption +1;
+			} else if (key == enterKey || key == spaceKey) {
+				processAnswer(view.heSays[view.selectedOption]);
+			}
+		})
+}
 
 	/*******************/
 	/* Local functions */
@@ -88,8 +111,6 @@ var DatingController = function($scope, $http){
 
 		var endingText = "";
 
-		console.log(currentCharacter.failures, Object.keys(currentCharacter.topics).length)
-
 		if (currentCharacter.concluded) {
 			endingText = "Looks like you got a date with " + currentCharacter.name + ", congrats!";
 			plannedDates += 1;
@@ -153,6 +174,7 @@ var DatingController = function($scope, $http){
 		if (answers == null) answers = [];
 
 		var displayedAnswers = [];
+		view.selectedOption = 0;
 
 		for (var i = 0; i < answers.length; i++) {
 			displayedAnswers.push(answers[i]);

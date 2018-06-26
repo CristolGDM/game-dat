@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <head>
 <title>Differentiating Asynchronous Transitions</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -10,8 +10,8 @@
 </head>
 <body>
 	<div ng-controller="DatingController as date" class="page-wrapper" style="background-image: url({{date.backgroundImage}})">
-		<p style="border: 1px solid red; color:red; position: fixed; top: 20px; left: 50%; padding: 5px 15px; font-size: 16px; display: none">
-			data:
+		<p style="border: 1px solid red; color:red; position: fixed; top: 20px; left: 50%; padding: 5px 15px; font-size: 16px; display: block">
+			data: {{date.selectedOption}}
 		</p>
 		<div class="attraction-bar" ng-class="{'show': date.face.location.length > 0}" style="background: linear-gradient(0deg, #ff5a05 {{date.getAttractionPercentage()}}%, rgba(0,0,0,0) 0%)"></div>
 		<div class="character-image"
@@ -28,9 +28,9 @@
 
 			<p class="dialog" ng-show="date.selectCharacterText.length > 0 && date.remainingDialog.length === 0">{{date.selectCharacterText}}</p>
 
-			<p class="option" ng-repeat="character in date.characters" ng-click="date.selectCharacter(character)" ng-show="date.selectCharacterText.length > 0 && date.remainingDialog.length === 0">- {{character}}</p>
+			<p class="option" ng-repeat="character in date.characters" ng-click="date.selectCharacter(character)" ng-if="date.selectCharacterText.length > 0 && date.remainingDialog.length === 0"><span ng-if="date.selectedOption !== $index">-{{$index}}</span><span ng-if="date.selectedOption === $index">&9658;{{$index}}</span> {{character}}</p>
 
-			<p class="option" ng-repeat="answer in date.heSays" ng-click="date.processAnswer(answer)" ng-show="date.remainingDialog.length === 0">- {{answer[0]}}</p>
+			<p class="option" ng-repeat="answer in date.heSays" ng-click="date.processAnswer(answer)" ng-if="date.remainingDialog.length === 0"><span ng-if="date.selectedOption !== $index">-</span><span ng-if="date.selectedOption === $index">►</span> {{answer[0]}}</p>
 		</div>
 		<div class="screen-layer" ng-click="date.advanceDialog(date.remainingDialog)" ng-if="date.remainingDialog.length !== 0"></div>
 		<img ng-src="{{image.location}}" style="display:none" ng-repeat="image in date.preloadImages" />
