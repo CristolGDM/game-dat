@@ -321,7 +321,7 @@ var characters = {
 			mad: 30.00,
 			awkward: 33.33,
 			concludeYes: 10.00,
-			concludeNo: 43.32
+			concludeNo: 43.33
 		},
 
 		hi: ["Umph, what do you want?"],

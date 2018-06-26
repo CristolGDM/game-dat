@@ -82,7 +82,7 @@
 }
 
 .dialog {
-	padding-bottom: 15px
+	padding-bottom: 15px;
 }
 
 .option {
@@ -96,4 +96,30 @@
 .option-pointer {
 	display: inline-block;
 	width: 25px;
+}
+
+@media only screen and (max-width: 1000px) {
+	.dialog, .option {
+		font-size: 15px;
+	}
+	.dialog {
+		padding-bottom: 5px;
+	}
+	.option {
+		padding-left: 0;
+	}
+
+	.option-pointer {
+		display: inline-block;
+		width: 10px;
+	}
+}
+
+@media only screen and (orientation: portrait) {
+	.character-image {
+		bottom: calc(30% + 32px);
+	}
+	.dialog, .option {
+		font-size: 15px;
+	}
 }
