@@ -192,7 +192,7 @@ var characters = {
 						["Oh my god it's my favorite group too, they're amazing!", "positive", "Really?! That's our shameful secret then!"],
 						["Okay.", "neutral"],
 						["Oh god, seriously? Are you fucking five years old?", "negative", "Why, that's your type, pedo?"],
-						["Hahahaha that's amazing, didn't expect that, I like it!", "joke", "Yeah, that's why I never tell people"]
+						["Sounds like a candy name, it HAS to be good", "joke", "Yeah, that's why I never tell people"]
 					]
 				},
 				conclude: {
@@ -301,6 +301,108 @@ var characters = {
 					question: "Actually, wanna prepare a cosplay together for next summer?",
 					success: ["Fuck yeah I want", "I'll cosplay as a poney", "Cloppyclop me until I walk as straight as Elton John.", "It's okay because I'm 18."],
 					failure: ["Umm I don't think you can do cosplay sorry...", "Unless you do a Jabba cosplay!", "But I don't like Star Wars sorry!"]
+				}
+			}
+		}
+	},
+	"Otoko": {
+		name: "Otoko",
+		attraction: 30,
+		face: {
+			location: "./dat-otoko-column.png",
+			width: 584,
+			height: 560
+		},
+		faces: {
+			default: 0,
+			nice: 30.44,
+			happy: 21.75,
+			angry: 65.23,
+			mad: 17.38,
+			awkward: 4.36,
+			concludeYes: 8.70,
+			concludeNo: 60.87
+		},
+
+		hi: ["Umph, what do you want?"],
+
+		topics: {
+			today: {
+				name: "today",
+				open: "So what did you do today?",
+				text: ["Why do you care?", "We played soccer at the beach.", "With friends.", "Whatever."],
+				answers: [
+					["Oh I like playing soccer too, how did it go?", "positive"],
+					["I see.", "neutral"],
+					["How did it go?", "more"],
+					["Did you bore them to death too?", "negative"],
+					["Wow don't sound too excited!", "joke"]
+				],
+				additional: {
+					text: ["We lost against one girl.", "She was so annoying.", "Not like I care"],
+					answers: [
+						["It's okay, I'll help you next time!", "positive", ["Yeah why not.", "If you want."]],
+						["Okay.", "neutral"],
+						["Haha fucking weakling", "negative", ["Huh?", "You're noisy."]],
+						["Damn, losing against a little girl must hurt.", "joke", ["I didn't say she was a little girl.", "She wasn't.", "Seriously."]]
+					]
+				},
+				conclude: {
+					question: "Can you show me how to play soccer one of those days?",
+					success: ["Hmmm sure.","Always up for helping cuties.", "I mean you're not only cute.", "Well you are - oh jeez..."],
+					failure: ["Nah."]
+				}
+			},
+			weekend: {
+				name: "weekend",
+				open: "Doing anything cool this weekend?",
+				text: ["Why do you want to know?","Probably just going downtown.", "Looking cool."],
+				answers: [
+					["Oh I'm going downtown too! Where?", "positive"],
+					["I see.", "neutral"],
+					["Where exactly?", "more"],
+					["Oh come on you're a fucking cliché.", "negative"],
+					["Nice! Wearing a cape and shit?", "joke"]
+				],
+				additional: {
+					text: ["I like sitting near the station.", "Looking at the sky.", "Especially if it rains a bit.", "I look dark and brooding.", "Damn cool."],
+					answers: [
+						["Well if it's your thing, more power to you!", "positive", ["Yeah it's my thing.","Just wish I had someone to take pictures.", "It's hard to take brooding selfies."]],
+						["Okay.", "neutral"],
+						["And you just sit down like that? Isn't it fucking boring?", "negative", ["You wouldn't understand.", "It's an intellectual thing."]],
+						["Must be hard to take selfies haha", "joke", ["Yes it is.", "I keep practicing though."]]
+					]
+				},
+				conclude: {
+					question: "Maybe I can come with you and take your pictures.",
+					success: ["Yeah we can take pictures together.","I mean, pictures of me.", "But together would be better.", "Oh god I fucked it up again..."],
+					failure: ["I look better when you're not here.", "No offense.", "Kinda."]
+				}
+			},
+			hobbies: {
+				name: "hobbies",
+				open: "What are your hobbies?",
+				text: ["Only cool things.", "I like metal.", "But not violent metal.", "Only cool metal.", "Also not nerdy stuff."],
+				answers: [
+					["Oh I went to a metal concert recently! What band do you like?", "positive"],
+					["I see.", "neutral"],
+					["What band do you like?", "more"],
+					["You're such a peasant, real metal people love Amon Amarth", "negative"],
+					["Oh like copper? Brass?", "joke"]
+				],
+				additional: {
+					text: ["Like I don't like Babymetal.", "Definitely not.", "Not listening to them every day."],
+					answers: [
+						["Oh it's totally not my favorite band too!", "positive", ["Stop trying so hard.", "But you're cool."]],
+						["Okay.", "neutral"],
+						["Can I punch your face?", "negative", ["Try it and I'll destroy you.", "By calling the police."]],
+						["You should try their costumes, would look good on you!", "joke", ["...!", "I definitely never tried that.", "I kind of have big thighs.", "Didn't fit."]]
+					]
+				},
+				conclude: {
+					question: "What about not listening to Babymetal together?",
+					success: ["Hmph, if you insist.", "But I definitely don't like them.", "Same as I definitely don't like you."],
+					failure: ["Try it by yourself first.", "I'll join you never."]
 				}
 			}
 		}
