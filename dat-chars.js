@@ -263,7 +263,7 @@ var characters = {
 					["Play games like Othello? Such a gamer!", "joke"]
 				],
 				additional: {
-					text: ["I want to play Dark Souls!","But I just finished my 10th playthrough SL1 so I'm a bit bored!","So maybe Skyrim!","My 640 modlist is almost ready, finally managed to integrate SoS and SLab!","Just wondering if FlowerGirls is worth it hihi!"],
+					text: ["I want to play Dark Souls!","But I just finished my 10th playthrough SL1 so I'm a bit bored!","So maybe Skyrim!","My 640 modlist is almost ready, finally managed to integrate SoS and SLab!","Just wondering if FlowerGirls is worth it!"],
 					answers: [
 						["I love those games, and that sounds very creative, congrats to you.", "positive", ["Yay I can express myself!","SLsubmit is very good too!","I can make you into a NPC!"]],
 						["Okay.", "neutral"],

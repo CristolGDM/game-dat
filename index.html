@@ -25,7 +25,7 @@
 			"
 		></div>
 		<div class="text-area">
-			<p class="dialog" ng-show="date.sheSays.length > 0">{{date.sheSays}}</p>
+			<p class="dialog" ng-show="date.dialog.length > 0">{{date.dialog}}</p>
 
 			<p class="dialog" ng-show="date.selectCharacterText.length > 0 && date.remainingDialog.length === 0">{{date.selectCharacterText}}</p>
 
@@ -38,7 +38,7 @@
 				<span class="option-pointer" ng-if="date.selectedOption === $index">▸</span> {{character}}</p>
 
 			<p class="option"
-				ng-repeat="answer in date.heSays"
+				ng-repeat="answer in date.playerSays"
 				ng-click="date.processAnswer(answer)"
 				ng-mouseenter="date.selectedOption = $index"
 				ng-if="date.remainingDialog.length === 0">

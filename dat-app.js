@@ -11,11 +11,14 @@ var DatingController = function($scope, $http){
 	/*******************/
 	/* Scope variables */
 	/*******************/
+	view.characters = [];
 	view.currentFace = 0;
-	view.selectedOption = 0;
+	view.dialog = "";
 	view.face = {width: 100, height: 100};
+	view.playerSays = [];
 	view.remainingDialog = [];
 	view.selectCharacterText = "";
+	view.selectedOption = 0;
 
 	/*******************/
 	/* Scope functions */
@@ -63,7 +66,7 @@ var DatingController = function($scope, $http){
 						selectCharacter(view.characters[view.selectedOption]);
 					}
 					else {
-						processAnswer(view.heSays[view.selectedOption]);
+						processAnswer(view.playerSays[view.selectedOption]);
 					}
 				}
 			}
@@ -81,10 +84,10 @@ var DatingController = function($scope, $http){
 	function advanceDialog(text){
 		if(typeof text === 'string'){
 			view.remainingDialog = [];
-			view.sheSays = '"' + text + '"';
+			view.dialog = '"' + text + '"';
 		}
 		else if (text.length !== 0) {
-			view.sheSays = '"' + text[0] + '"';
+			view.dialog = '"' + text[0] + '"';
 			view.remainingDialog = text;
 			view.remainingDialog.shift();
 		}
@@ -229,7 +232,7 @@ var DatingController = function($scope, $http){
 
 		/* Else we prepare the player answers, and start advancing the dialog */
 		advanceDialog(text);
-		view.heSays = shuffle(displayedAnswers);
+		view.playerSays = shuffle(displayedAnswers);
 	}
 
 	/* Gets the current attraction for that character */
