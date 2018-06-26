@@ -92,3 +92,8 @@
 .option:hover {
 	text-decoration: underline;
 }
+
+.option-pointer {
+	display: inline-block;
+	width: 25px;
+}
