@@ -268,7 +268,7 @@ var characters = {
 						["I love those games, and that sounds very creative, congrats to you.", "positive", ["Yay I can express myself!","SLsubmit is very good too!","I can make you into a NPC!"]],
 						["Okay.", "neutral"],
 						["Git gud cunt.", "negative", ["Oh you speak like the guy I invaded last night", "Is that you?"]],
-						["I love flowers.", "joke", ["Yay they're so pretty!", "And they do what I tell them!"]]
+						["Oh I like girls who sell flowers", "joke", ["Yay they sell their flower yay!", "They're so pretty!", "And they do what I tell them!"]]
 					]
 				},
 				conclude: {
