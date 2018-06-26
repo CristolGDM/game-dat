@@ -38,12 +38,25 @@ var DatingController = function($scope, $http){
 		var spaceKey = 32;
 
 		$scope.$apply(function(){
-			if (key == upKey) {
-				view.selectedOption = view.selectedOption === 0 ? view.heSays.length -1 : view.selectedOption -1;
-			} else if (key == downKey) {
-				view.selectedOption = view.selectedOption === view.heSays.length -1 ? 0 : view.selectedOption +1;
-			} else if (key == enterKey || key == spaceKey) {
-				processAnswer(view.heSays[view.selectedOption]);
+			var optionsNumber = document.getElementsByClassName('option').length;
+			if (optionsNumber === 0 && view.remainingDialog.length > 0) {
+				advanceDialog(view.remainingDialog)
+			}
+
+			else {
+
+				if (key == upKey) {
+					view.selectedOption = view.selectedOption === 0 ? optionsNumber -1 : view.selectedOption -1;
+				} else if (key == downKey) {
+					view.selectedOption = view.selectedOption === optionsNumber -1 ? 0 : view.selectedOption +1;
+				} else if (key == enterKey || key == spaceKey) {
+					if (view.selectCharacterText.length >0) {
+						selectCharacter(view.characters[view.selectedOption]);
+					}
+					else {
+						processAnswer(view.heSays[view.selectedOption]);
+					}
+				}
 			}
 		})
 }
