@@ -38,13 +38,22 @@ var DatingController = function($scope, $http){
 		var spaceKey = 32;
 
 		$scope.$apply(function(){
+			/* We get the number of displayed options */
 			var optionsNumber = document.getElementsByClassName('option').length;
-			if (optionsNumber === 0 && view.remainingDialog.length > 0) {
-				advanceDialog(view.remainingDialog)
+
+			/* No displayed options can either mean one character is speaking (in which case we just advance) or there is absolutely nothing else to do (in which case we don't do anything) */
+			if (optionsNumber === 0) {
+				if(view.remainingDialog.length > 0) {
+					advanceDialog(view.remainingDialog);
+				}
+				else {
+					return;
+				}
 			}
 
 			else {
 
+				/* Up and down navigate through the options; space and enter select the current option */
 				if (key == upKey) {
 					view.selectedOption = view.selectedOption === 0 ? optionsNumber -1 : view.selectedOption -1;
 				} else if (key == downKey) {
@@ -116,7 +125,11 @@ var DatingController = function($scope, $http){
 		currentCharacter.attraction += amount;
 	}
 
+	/*
+	 * Called when the current character reaches the end of its conversation
+	 */
 	function finishCharacter(){
+		/* Removes the character from the list of available characters */
 		var index = view.characters.indexOf(currentCharacter.name);
 		if (index !== -1){
 			view.characters.splice(index, 1);
@@ -124,6 +137,7 @@ var DatingController = function($scope, $http){
 
 		var endingText = "";
 
+		/* Adds some text depending on whether the player successfully concluded with the current character or not */
 		if (currentCharacter.concluded) {
 			endingText = "Looks like you got a date with " + currentCharacter.name + ", congrats!";
 			plannedDates += 1;
@@ -132,6 +146,7 @@ var DatingController = function($scope, $http){
 			endingText = "Looks like you ran out of things to say..."
 		}
 
+		/* If there is no more characters, we finish the game and reminds how many dates the player got */
 		if (view.characters.length === 0) {
 			endingText += " And it looks like you spoke with everybody!";
 			if (plannedDates === 0) {
@@ -144,6 +159,7 @@ var DatingController = function($scope, $http){
 				endingText += " You even have " + plannedDates + " dates planned, someone's going to be busy!";
 			}
 		}
+		/* Else the player can speak with someone else */
 		else {
 			endingText += " Want to speak to someone else?";
 		}
@@ -206,14 +222,17 @@ var DatingController = function($scope, $http){
 			}
 		}
 
+		/* If there is no answers, we close that character */
 		if (displayedAnswers.length === 0) {
 			finishCharacter();
 		}
 
+		/* Else we prepare the player answers, and start advancing the dialog */
 		advanceDialog(text);
 		view.heSays = shuffle(displayedAnswers);
 	}
 
+	/* Gets the current attraction for that character */
 	function getAttractionPercentage() {
 		if (currentCharacter == null) {
 			return 0
@@ -360,6 +379,10 @@ var DatingController = function($scope, $http){
 		}
 	}
 
+	/*
+	 * Selects a given character
+	 * @param {string} characterName - Name of the character to choose
+	 */
 	function selectCharacter(characterName) {
 		currentCharacter = characters[characterName];
 		view.face = currentCharacter.face;
