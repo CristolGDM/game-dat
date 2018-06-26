@@ -310,18 +310,18 @@ var characters = {
 		attraction: 30,
 		face: {
 			location: "./dat-otoko-column.png",
-			width: 584,
+			width: 692,
 			height: 560
 		},
 		faces: {
-			default: 0,
-			nice: 30.44,
-			happy: 21.75,
-			angry: 65.23,
-			mad: 17.38,
-			awkward: 4.36,
-			concludeYes: 8.70,
-			concludeNo: 60.87
+			default: 16.66,
+			nice: 6.67,
+			happy: 0.00,
+			angry: 3.34,
+			mad: 30.00,
+			awkward: 33.33,
+			concludeYes: 10.00,
+			concludeNo: 43.32
 		},
 
 		hi: ["Umph, what do you want?"],
