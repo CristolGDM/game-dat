@@ -40,6 +40,7 @@
 			<p class="option"
 				ng-repeat="answer in date.heSays"
 				ng-click="date.processAnswer(answer)"
+				ng-mouseenter="date.selectedOption = $index"
 				ng-if="date.remainingDialog.length === 0">
 				<span class="option-pointer" ng-if="date.selectedOption !== $index">-</span>
 				<span class="option-pointer" ng-if="date.selectedOption === $index">▸</span> {{answer[0]}}</p>
