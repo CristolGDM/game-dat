@@ -309,19 +309,19 @@ var characters = {
 		name: "Otoko",
 		attraction: 30,
 		face: {
-			location: "./dat-otoko-column.png",
+			location: "./dat-otoko-column-redux.png",
 			width: 692,
-			height: 560
+			height: 559
 		},
 		faces: {
-			default: 16.66,
-			nice: 6.67,
-			happy: 0.00,
-			angry: 3.34,
-			mad: 30.00,
-			awkward: 33.33,
-			concludeYes: 10.00,
-			concludeNo: 43.33
+			default: 0,
+			nice: 14.3,
+			happy: 28.56,
+			angry: 42.88,
+			mad: 57.11,
+			awkward: 71.42,
+			concludeYes: 85.68,
+			concludeNo: 99.98
 		},
 
 		hi: ["Umph, what do you want?"],
