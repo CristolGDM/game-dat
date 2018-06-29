@@ -157,8 +157,8 @@ var characters = {
 					["Oh I love going to the beach! For swimming?", "positive"],
 					["I see.", "neutral"],
 					["Oh what's your plan there?", "more"],
-					["Damn you never do anything intellectual, like reading or watching YouTube videos about quantum theory?", "negative"],
-					["Oooh, that's why you're so tan. You're going to go there and tan the whole weekend right?", "joke"]
+					["You never do anything intellectual, like reading or watching YouTube videos about quantum theory?", "negative"],
+					["Oh, that's why you're so tan! I thought maybe you were a bodybuilder.", "joke"]
 				],
 				additional: {
 					text: "Well for now the plan is just to do some surfing, barbecue, and getting wasted.",
@@ -207,19 +207,19 @@ var characters = {
 		name: "Hikiko",
 		attraction: 50,
 		face: {
-			location: "./dat-hikiko-column.png",
-			width: 584,
+			location: "./dat-hikiko-column-redux.png",
+			width: 586,
 			height: 560
 		},
 		faces: {
-			default: 0,
-			nice: 30.44,
-			happy: 21.75,
-			angry: 65.23,
-			mad: 17.38,
-			awkward: 4.36,
-			concludeYes: 8.70,
-			concludeNo: 60.87
+			default: -.01,
+			nice: 14.28,
+			happy: 28.58,
+			angry: 42.86,
+			mad: 57.14,
+			awkward: 71.43,
+			concludeYes: 85.73,
+			concludeNo: 100.02
 		},
 
 		hi: ["Hello, so nice to meet you!", "I'm Hikiko! But you can call me Hiki!", "Or not it's fine!", "I'm over 18!", "How are you?!"],
@@ -247,7 +247,7 @@ var characters = {
 				},
 				conclude: {
 					question: "I'm good at doing nothing, let's do it together",
-					success: ["Damn right boy.", "We'll 'do it', better stretch.", "(I'm totally 18 by the way)"],
+					success: ["Damn right boy.", "We'll 'do it', better stretch.", "(I'm totally over 18 by the way)"],
 					failure: ["Ummm thanks no thanks!", "I prefer doing nothing alone!", "Or at least not with you!"]
 				}
 			},
@@ -273,7 +273,7 @@ var characters = {
 				},
 				conclude: {
 					question: "What about you show me how good you are at those games?",
-					success: ["Oh yeah baby.","I'll show you things even LoversLab wouldn't dare showing.","I'm 18."],
+					success: ["Oh yeah baby.","I'll show you things even LoversLab wouldn't dare showing.","I'm over 18."],
 					failure: ["Oh sorry I don't play with my inferiors...", "But keep trying!"]
 				}
 			},
@@ -299,7 +299,7 @@ var characters = {
 				},
 				conclude: {
 					question: "Actually, wanna prepare a cosplay together for next summer?",
-					success: ["Fuck yeah I want", "I'll cosplay as a poney", "Cloppyclop me until I walk as straight as Elton John.", "It's okay because I'm 18."],
+					success: ["Fuck yeah I want", "I'll cosplay as a poney", "Cloppyclop me until I walk as straight as Elton John.", "It's okay because I'm over 18."],
 					failure: ["Umm I don't think you can do cosplay sorry...", "Unless you do a Jabba cosplay!", "But I don't like Star Wars sorry!"]
 				}
 			}
