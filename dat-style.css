@@ -47,7 +47,7 @@
 	width: 100vw;
 	height: 100vh;
 	background-repeat: no-repeat;
-	background-size: 100%;
+	background-size: 100% 806%;
 	opacity: 0;
 	transition: opacity linear .5s;
 }
