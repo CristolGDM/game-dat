@@ -105,19 +105,19 @@ var characters = {
 		name: "Tsuyoko",
 		attraction: 50,
 		face: {
-			location: "./dat-tsuyoko-column.png",
+			location: "./dat-tsuyoko-column-redux.png",
 			width: 688,
 			height: 562
 		},
 		faces: {
-			default: 0.01,
-			nice: 61.51,
-			happy: 69.20,
-			angry: 26.91,
-			mad: 53.82,
-			awkward: 49.98,
-			concludeYes: 73.05,
-			concludeNo: 7.70
+			default: 0,
+			nice: 14.29,
+			happy: 28.57,
+			angry: 42.87,
+			mad: 57.15,
+			awkward: 71.44,
+			concludeYes: 85.73,
+			concludeNo: 100
 		},
 
 		hi: "Hey there",
