@@ -262,6 +262,7 @@ var DatingController = function($scope, $http){
 				var index = Math.floor(Math.random()*array.length)
 				view.selectCharacterText = "Such a nice day in " + array[index].data.title.split(" by")[0] + "... Who are you going to talk to?";
 				view.backgroundImage = array[index].data.url;
+				console.log("This background is called " + array[index].data.title + ". More info at https://www.reddit.com" + array[index].data.permalink);
 				}
 			);
 	}
