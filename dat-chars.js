@@ -239,7 +239,7 @@ var characters = {
 				additional: {
 					text: ["Well I watch a bit of everything!", "Like I really like shounen like my favorite is One Piece and I think Sanji is so cool!", "And Naruto too it's my favorite!"],
 					answers: [
-						["Oooh I really like those too!", "positive", ["Seriously?!"," Omg that's crazy!!","Who's your favorite character?!","Nevermind it has to be Sanji!"]],
+						["Oooh I really like those too!", "positive", ["Seriously?!"," Omg that's crazy!!","Do you like manga?!","You should read Emergence!"]],
 						["Okay.", "neutral"],
 						["Jeez that's fucking normie stuff", "negative", ["Huh?", "What's a normie?", "That's very rude fedora-san!"]],
 						["My favorite anime is Bojack Horseman", "joke", ["Oh what's that?!", "Is it that horsegirl idol anime?!", "Or is he fighting people or something?!", "I'll watch!"]]
