@@ -29,7 +29,11 @@ I think a way to go around that dilemma is either having experience in making th
 
 I also learned a lot about Object Oriented Programming (OOP). It is not something I use in my daily work, and I actually didn't use it in this project (see below), but the more I advanced, the more I realized how OOP would have made things easier every time I was stuck by an issue.
 
-This probably relates to the first issue I mentioned: OOP is great, but I feel like it is more difficult to set it up before you *really* know how your game is going to be structured. I'll definitely try it for my next project though
+This probably relates to the first issue I mentioned: OOP is great, but I feel like it is more difficult to set it up before you *really* know how your game is going to be structured. I'll definitely try it for my next project though.
+
+Also there is a much stronger connection between all parts of the projects than I expected. Code was very dependent on the assets, and vice versa.
+
+And finally, it is way easier to start a project than to finish it. I really liked working on this, but there were parts of it that really felt like work, and where I just wanted to start doing something else. I more or less expected it, but it was good to experience it directly.
 
 ## What I wished I had done differently
 
@@ -37,10 +41,12 @@ I wish I had found a way for "choosing a character" and "choosing an answer" to 
 
 I wish I had organized the code differently. I probably should have OOP'd a lot more things, for example adding the attraction functions to a character object, and each character being a new instance of that object, which would have increased modularity. Also "character choice" and "answer choice" being instances of a "player choice" object would probably have made the whole thing easier
 
+I wish I had found a better way to do the avatar tiling. As it is, it feels like a good idea poorly implemented.
+
 ## Disclaimer
-The assets used are not my assets; they come from the game [Danganronpa 2](https://store.steampowered.com/app/413420/Danganronpa_2_Goodbye_Despair/). I haven't played the game, sorry if I misrepresented a character you like
+The assets used are not my assets; the characters come from the game [Danganronpa 2](https://store.steampowered.com/app/413420/Danganronpa_2_Goodbye_Despair/). I haven't played the game, sorry if I misrepresented a character you like. The backgrounds come from [/r/ImaginaryCityscapes](https://www.reddit.com/r/ImaginaryCityscapes/).
 There is no sex sorry
 The humor is pretty bad
-The writing is probably lacking
+The writing is pretty bad too
 It was a learning project, so it might not be that fun
 The game is not very long
