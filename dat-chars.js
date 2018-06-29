@@ -3,19 +3,19 @@ var characters = {
 		name: "Futsuko",
 		attraction: 50,
 		face: {
-			location: "./dat-futsuko-column.png",
+			location: "./dat-futsuko-column-redux.png",
 			width: 540,
 			height: 550
 		},
 		faces: {
-			default: 0,
-			nice: 24.04,
-			happy: 60.02,
-			angry: 4.03,
-			mad: 16.01,
-			awkward: 72.01,
-			concludeYes: 20.01,
-			concludeNo: 84.03
+			default: -.06,
+			nice: 14.3,
+			happy: 28.6,
+			angry: 42.9,
+			mad: 57.14,
+			awkward: 71.45,
+			concludeYes: 85.72,
+			concludeNo: 100.02
 		},
 
 		hi: "Hello, nice to meet you!",
