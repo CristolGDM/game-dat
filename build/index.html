@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<head>
+<title>Dating "Simulator"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="./dat-chars.js"></script>
+<script src="./dat-app.js"></script>
+<link rel="stylesheet" type="text/css" href="./dat-style.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+</head>
+<body>
+	<div ng-controller="DatingController as date" class="page-wrapper" style="background-image: url({{date.backgroundImage}})">
+		<p style="border: 1px solid red; color:red; position: fixed; top: 20px; left: 50%; padding: 5px 15px; font-size: 16px; display: none">
+			data: {{date.selectedOption}}
+		</p>
+		<div class="attraction-bar" ng-class="{'show': date.face.location.length > 0}" style="background: linear-gradient(0deg, #ff5a05 {{date.getAttractionPercentage()}}%, rgba(0,0,0,0) 0%)"></div>
+		<div class="character-image"
+			ng-class="{'show': date.face.location.length > 0}"
+			style="
+				background-image: url({{date.face.location}});
+				background-position-y: {{date.currentFace}}%;
+				max-width: {{100*date.face.width / date.face.height}}vh;
+				max-height: {{100*date.face.height / date.face.width}}vw;
+			"
+		></div>
+		<div class="text-area">
+			<p class="dialog" ng-show="date.dialog.length > 0">{{date.dialog}}</p>
+
+			<p class="dialog" ng-show="date.selectCharacterText.length > 0 && date.remainingDialog.length === 0">{{date.selectCharacterText}}</p>
+
+			<p class="option"
+				ng-repeat="character in date.characters"
+				ng-click="date.selectCharacter(character)"
+				ng-mouseenter="date.selectedOption = $index"
+				ng-if="date.selectCharacterText.length > 0 && date.remainingDialog.length === 0">
+				<span class="option-pointer" ng-if="date.selectedOption !== $index">-</span>
+				<span class="option-pointer" ng-if="date.selectedOption === $index">▸</span> {{character}}</p>
+
+			<p class="option"
+				ng-repeat="answer in date.playerSays"
+				ng-click="date.processAnswer(answer)"
+				ng-mouseenter="date.selectedOption = $index"
+				ng-if="date.remainingDialog.length === 0">
+				<span class="option-pointer" ng-if="date.selectedOption !== $index">-</span>
+				<span class="option-pointer" ng-if="date.selectedOption === $index">▸</span> {{answer[0]}}</p>
+		</div>
+		<div class="screen-layer" ng-click="date.advanceDialog(date.remainingDialog)" ng-if="date.remainingDialog.length !== 0"></div>
+		<img ng-src="{{image.location}}" style="display:none" ng-repeat="image in date.preloadImages" />
+	</div>
+</body>
