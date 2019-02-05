@@ -45,8 +45,13 @@ I wish I had found a better way to do the avatar tiling. As it is, it feels like
 
 ## Disclaimer and apologies
 The assets used are not my assets; the characters come from the game [Danganronpa 2](https://store.steampowered.com/app/413420/Danganronpa_2_Goodbye_Despair/). I haven't played the game, sorry if I misrepresented a character you like. The backgrounds come from [/r/ImaginaryCityscapes](https://www.reddit.com/r/ImaginaryCityscapes/).
+
 There is no sex sorry
+
 The humor is pretty bad
+
 The writing is pretty bad too
+
 It was a learning project, so it might not be that fun
+
 The game is not very long
