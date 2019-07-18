@@ -55,3 +55,5 @@ The writing is pretty bad too
 It was a learning project, so it might not be that fun
 
 The game is not very long
+
+You can play it on [itch.io](https://mikalichou.itch.io/a-dating-simulator)
